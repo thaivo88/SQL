@@ -40,4 +40,4 @@ INSERT INTO books (author, title, words)
 SELECT author, SUM(words) AS total_words 
     FROM books 
         GROUP BY author 
-        HAVING words >= 100000;
+        HAVING words >= 120000;
