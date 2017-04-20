@@ -6,7 +6,7 @@ CREATE TABLE student_grades (
     fraction_completed REAL);
     
 INSERT INTO student_grades (name, number_grade, fraction_completed)
-    VALUES ("Winston", 90, 0.805);
+    VALUES ("Will", 90, 0.805);
 INSERT INTO student_grades (name, number_grade, fraction_completed)
     VALUES ("Winnefer", 95, 0.901);
 INSERT INTO student_grades (name, number_grade, fraction_completed)
