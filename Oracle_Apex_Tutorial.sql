@@ -16,13 +16,22 @@
   MIN(column)     return the lowest value of a column
   SUM(column)     return the total sum of a column
   
-  Single Line Function (SLF)
-  UPPER(column)   return string value all in upper case
-  LOWER(column)   return string value all in lower case */
+  Single Line Function (SLF):
+  UPPER('string')                   return string value all in upper case
+  LOWER('string')                   return string value all in lower case
+  INITCAP('string')                 return inital letter of the string as captial letter
+  LENGHT('string')                  return the number of character including white spaces
+  SUBSTR('string', x, xx)           return part of a string where x is the starting postion and xx is the ending postion
+  LPAD('string', x, 'character')    the string will be padded on the left with the character to make the string x lenght
+  RPAD('string', x, 'character')    the string will be padded on the right with the character to make the string x lenght
+  LTRIM('string', 'character')      trim the first character from the left
+  RTRIM('string', 'character')      trim the first character from the right*/
 
 /* Two main tables used in our tutorial using Oracle Apex SQL*/
 SELECT * FROM emp;
 SELECT * FROM dept;
+/* dual table is used to test statement because there is only one record*/
+SELECT * FROM dual;
 
 /* Selecting employees with no commission with salary greater than 1100 and less than 5000 but excluding salary with 1500 */
 SELECT * FROM emp 
@@ -53,3 +62,5 @@ SELECT concat(
   concat(upper(ename), lower(' IS THE NAME ')), 
   concat(lower('and their job is '), job)) 
 AS position FROM emp;
+
+
