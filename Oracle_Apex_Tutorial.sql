@@ -9,14 +9,17 @@
   BETWEEN    Between an inclusive range
   LIKE       Search for a pattern. (A "%" sign can be used to define wildcards)
   
-  Function        Description
-  AVG(column)     return the average value of a column
-  COUNT(column)   return the number of rows of a column without a NULL value
-  MAX(column )    return the highest value of a column
-  MIN(column)     return the lowest value of a column
-  SUM(column)     return the total sum of a column
+  Numeric Function                  Description
+  AVG(column)                       return the average value of a column
+  COUNT(column)                     return the number of rows of a column without a NULL value
+  MAX(column )                      return the highest value of a column
+  MIN(column)                       return the lowest value of a column
+  SUM(column)                       add the total sum of a column
+  ROUND(134.24553, 2)               round the value with 2 decimal place 
+  TRUNC(107.9234, 2)                remove the rest of the value after the second decimal place
+  TO_CHAR(123,'$999.99')            format the value into dollar
   
-  Single Line Function (SLF):
+  Single Line Function (SLF)        Description
   UPPER('string')                   return string value all in upper case
   LOWER('string')                   return string value all in lower case
   INITCAP('string')                 return inital letter of the string as captial letter
@@ -25,7 +28,15 @@
   LPAD('string', x, 'character')    the string will be padded on the left with the character to make the string x lenght
   RPAD('string', x, 'character')    the string will be padded on the right with the character to make the string x lenght
   LTRIM('string', 'character')      trim the first character from the left
-  RTRIM('string', 'character')      trim the first character from the right*/
+  RTRIM('string', 'character')      trim the first character from the right
+  
+  Data Line Function                    Description
+  sysdate                               return the current date of the system
+  systimestamp                          return the date and time and time zone
+  ADD_MONTHS('date', x)                 add x amount of month to the date
+  MONTHS_BETWEEN('dateA', 'dateB')      counting the months in between the date A to B
+  TO_CHAR(sysdate, 'Month DD,YYYY')     format sysdate into month day, year= April 28, 2017
+  */
 
 /* Two main tables used in our tutorial using Oracle Apex SQL*/
 SELECT * FROM emp;
