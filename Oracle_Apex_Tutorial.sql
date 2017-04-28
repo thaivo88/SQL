@@ -1,4 +1,6 @@
-/*Operators  Description
+/*
+  Operators  Description
+  --------------------------------------------------------------------------------
   =          Equal
   <>         Not Equal
   !=         Not Equal
@@ -10,6 +12,7 @@
   LIKE       Search for a pattern. (A "%" sign can be used to define wildcards)
   
   Numeric Function                  Description
+  ------------------------------------------------------------------------------------------------
   AVG(column)                       return the average value of a column
   COUNT(column)                     return the number of rows of a column without a NULL value
   MAX(column )                      return the highest value of a column
@@ -20,6 +23,7 @@
   TO_CHAR(123,'$999.99')            format the value into dollar
   
   Single Line Function (SLF)        Description
+  ------------------------------------------------------------------------------------------------------------------------
   UPPER('string')                   return string value all in upper case
   LOWER('string')                   return string value all in lower case
   INITCAP('string')                 return inital letter of the string as captial letter
@@ -31,12 +35,23 @@
   RTRIM('string', 'character')      trim the first character from the right
   
   Data Line Function                    Description
+  -------------------------------------------------------------------------------------
   sysdate                               return the current date of the system
   systimestamp                          return the date and time and time zone
   ADD_MONTHS('date', x)                 add x amount of month to the date
   MONTHS_BETWEEN('dateA', 'dateB')      counting the months in between the date A to B
-  TO_CHAR(sysdate, 'Month DD,YYYY')     format sysdate into month day, year= April 28, 2017
-  */
+  TO_CHAR(sysdate, 'MM-DD-YY')          format sysdate into month day, year= 04-28-17
+  
+  Format Element       How it works               Value Returned 
+  ------------------------------------------------------------------
+  YEAR                 Year spelled out           two thousand nine
+  MM                   two digit value of month   04
+  MONTH                full name of month         March
+  MON                  three letter abbr          MAR
+  DY                   three letter abbr of day   Tue
+  DAY                  full name of the day       Tuesday
+  DD                   numeric day of month       25
+  YYYY                 4 digit year               2007*/
 
 /* Two main tables used in our tutorial using Oracle Apex SQL*/
 SELECT * FROM emp;
