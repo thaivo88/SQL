@@ -10,6 +10,7 @@
   <=         Less than or equal
   BETWEEN    Between an inclusive range
   LIKE       Search for a pattern. (A "%" sign can be used to define wildcards)
+  NULL       Empty cell (does not mean zero)
   
   Numeric Function                  Description
   ------------------------------------------------------------------------------------------------
@@ -22,6 +23,14 @@
   TRUNC(107.9234, 2)                remove the rest of the value after the second decimal place
   TO_CHAR(123,'$999.99')            format the value into dollar
   
+  Format Element    Description                 Format usage      Example
+  -------------------------------------------------------------------------------
+  9                 represents a number         9999.99           number  27.6     output   27.60
+  0                 forces a zero in display    0000.00           number  278.6    output   0278.60
+  $                 puts a dollar sign          $999.99           number  12.7     output   $12.70
+  .                 decimal point               $99.9             number  48.99    output   $48.99
+  ,                 comma for 1000 separator    $99,999.99        number 12400.8   output   $12,400.80
+  
   Single Line Function (SLF)        Description
   ------------------------------------------------------------------------------------------------------------------------
   UPPER('string')                   return string value all in upper case
@@ -33,6 +42,7 @@
   RPAD('string', x, 'character')    the string will be padded on the right with the character to make the string x lenght
   LTRIM('string', 'character')      trim the first character from the left
   RTRIM('string', 'character')      trim the first character from the right
+  NVL('column', value)              Replace null cell with a value
   
   Data Line Function                    Description
   -------------------------------------------------------------------------------------
@@ -41,6 +51,7 @@
   ADD_MONTHS('date', x)                 add x amount of month to the date
   MONTHS_BETWEEN('dateA', 'dateB')      counting the months in between the date A to B
   TO_CHAR(sysdate, 'MM-DD-YY')          format sysdate into month day, year= 04-28-17
+  TO_DATE('string','format')            format a string into a date format: TO_DATE('2012-08-27','YYYY-MM-DD')
   
   Format Element       How it works               Value Returned 
   ------------------------------------------------------------------
@@ -51,6 +62,7 @@
   DY                   three letter abbr of day   Tue
   DAY                  full name of the day       Tuesday
   DD                   numeric day of month       25
+  DDTH                 date of month              25th
   YYYY                 4 digit year               2007*/
 
 /* Two main tables used in our tutorial using Oracle Apex SQL*/
@@ -89,4 +101,7 @@ SELECT concat(
   concat(lower('and their job is '), job)) 
 AS position FROM emp;
 
-
+/* comm column is numeric so we need to change it to char to add the "no data found" string
+to_char(comm)= changes comm column into a string allowing all the null cell to be replaced with "no data found"*/
+SELECT ename, job, sal, NVL(TO_CHAR(comm), 'NO DATA FOUND') AS income FROM emp
+ORDER BY income;
