@@ -45,6 +45,7 @@
   LTRIM('string', 'character')      trim the first character from the left
   RTRIM('string', 'character')      trim the first character from the right
   NVL('column', value)              Replace null cell with a value
+  COALESCE('column', value)         Replace null cell with a value
   NULLIF(arg1, arg2)                if arg1 and arg2 equal the result will become null
   
   Data Line Function                    Description
