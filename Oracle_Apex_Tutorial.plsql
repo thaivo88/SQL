@@ -29,20 +29,23 @@
   0                 forces a zero in display    0000.00           number  278.6    output   0278.60
   $                 puts a dollar sign          $999.99           number  12.7     output   $12.70
   .                 decimal point               $99.9             number  48.99    output   $48.99
+  D                 decimal point               $99G999D00        number  3689.82  output   $3,689.82
   ,                 comma for 1000 separator    $99,999.99        number 12400.8   output   $12,400.80
+  G                 comma for 1000 separator    $99G999D00        number  3689.82  output   $3,689.82
   
   Single Line Function (SLF)        Description
   ------------------------------------------------------------------------------------------------------------------------
   UPPER('string')                   return string value all in upper case
   LOWER('string')                   return string value all in lower case
   INITCAP('string')                 return inital letter of the string as captial letter
-  LENGHT('string')                  return the number of character including white spaces
+  LENGTH('string')                  return the number of character including white spaces
   SUBSTR('string', x, xx)           return part of a string where x is the starting postion and xx is the ending postion
   LPAD('string', x, 'character')    the string will be padded on the left with the character to make the string x lenght
   RPAD('string', x, 'character')    the string will be padded on the right with the character to make the string x lenght
   LTRIM('string', 'character')      trim the first character from the left
   RTRIM('string', 'character')      trim the first character from the right
   NVL('column', value)              Replace null cell with a value
+  NULLIF(arg1, arg2)                if arg1 and arg2 equal the result will become null
   
   Data Line Function                    Description
   -------------------------------------------------------------------------------------
@@ -63,7 +66,12 @@
   DAY                  full name of the day       Tuesday
   DD                   numeric day of month       25
   DDTH                 date of month              25th
-  YYYY                 4 digit year               2007*/
+  YYYY                 4 digit year               2007
+  
+  Facts:
+  ------------------------------------------------------------------------
+  Subqueries can contain both GROUP BY and ORDER BY clauses.
+  */
 
 /* Two main tables used in our tutorial using Oracle Apex SQL*/
 SELECT * FROM emp;
@@ -105,3 +113,6 @@ AS position FROM emp;
 to_char(comm)= changes comm column into a string allowing all the null cell to be replaced with "no data found"*/
 SELECT ename, job, sal, NVL(TO_CHAR(comm), 'NO DATA FOUND') AS income FROM emp
 ORDER BY income;
+/* selecting all name with 5 characters to printout length equal 5 */
+SELECT ename, LENGTH(ename), NVL( TO_CHAR( NULLIF( LENGTH( ename ), 5 )), 'Length equal to 5') as "Character Length" from emp
+  
