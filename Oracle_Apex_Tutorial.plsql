@@ -116,4 +116,7 @@ SELECT ename, job, sal, NVL(TO_CHAR(comm), 'NO DATA FOUND') AS income FROM emp
 ORDER BY income;
 /* selecting all name with 5 characters to printout length equal 5 */
 SELECT ename, LENGTH(ename), NVL( TO_CHAR( NULLIF( LENGTH( ename ), 5 )), 'Length equal to 5') as "Character Length" from emp
-  
+
+/* Selecting all the job titles and outputting its average salary per job title*/
+SELECT job, TO_CHAR(ROUND(AVG(sal),2), '$99G999D00') AS "Income"
+FROM emp GROUP BY job;
