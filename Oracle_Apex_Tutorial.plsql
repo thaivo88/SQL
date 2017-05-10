@@ -135,3 +135,10 @@ SELECT col_1, col_2, col_n, group_function(aggregate_expression)
   WHERE conditions
   GROUP BY col_1. col_2, col_n
 ORDER BY conditions
+
+--NESTING SUBQUERIES: Nesting query will excute the inner nest then the outter nest; just like math problems.
+SELECT * FROM dept
+WHERE deptno = ( SELECT deptno FROM dept WHERE deptno = 30)
+--above and below queries are equal= meaning the out put is the same.
+SELECT * FROM dept
+WHERE deptno = 30
