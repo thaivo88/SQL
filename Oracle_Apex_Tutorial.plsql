@@ -123,7 +123,15 @@ SELECT ename, LENGTH(ename), NVL( TO_CHAR( NULLIF( LENGTH( ename ), 5 )), 'Lengt
 SELECT job, TO_CHAR(ROUND(AVG(sal),2), '$99G999D00') AS "Income"
 FROM emp GROUP BY job;
 
-
-SELECT count(*), job
+--Finding out which job title has 2 employees using the HAVING clause
+SELECT job
   FROM emp GROUP BY job
 HAVING count(*) = 2
+
+--when grouping a select statment all the columns from SELECT clause MUST be in the GROUP BY clause but with out the group_function(*)
+--but the GROUP BY clause doesnt all need to be in the SELECT clause
+SELECT col_1, col_2, col_n, group_function(aggregate_expression)
+  FROM tables
+  WHERE conditions
+  GROUP BY col_1. col_2, col_n
+ORDER BY conditions
