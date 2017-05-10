@@ -71,52 +71,59 @@
   
   Facts:
   ------------------------------------------------------------------------
-  Subqueries can contain both GROUP BY and ORDER BY clauses.
-  */
+  -No GROUP functions in WHERE clause (only single row functions allowed in WHERE clause)
+  Subqueries can NOT contain both GROUP BY and ORDER BY clauses.
+  instead you can use the HAVING clause right after the GROUP BY clause.
+   */
 
-/* Two main tables used in our tutorial using Oracle Apex SQL*/
+-- Two main tables used in our tutorial using Oracle Apex SQL
 SELECT * FROM emp;
 SELECT * FROM dept;
-/* dual table is used to test statement because there is only one record*/
+-- dual table is used to test statement because there is only one record
 SELECT * FROM dual;
 
-/* Selecting employees with no commission with salary greater than 1100 and less than 5000 but excluding salary with 1500 */
+-- Selecting employees with no commission with salary greater than 1100 and less than 5000 but excluding salary with 1500 
 SELECT * FROM emp 
   WHERE comm IS NULL OR comm = 0
   AND sal > 1100 AND sal < 5000 
   AND sal != 1500
 ORDER BY comm;
 
-/* Selecting employees with the job title SALESMAN with commission of 300 or greater than 1000 */
+-- Selecting employees with the job title SALESMAN with commission of 300 or greater than 1000 
 SELECT * FROM emp 
   WHERE job = 'SALESMAN' 
 AND comm = 300 OR comm > 1000;
 
-/* AS statement is use for alias, in other words change the header name of the column */
+-- AS statement is use for alias, in other words change the header name of the column 
 SELECT ename AS "Employee Name", sal AS "Income", comm AS "Commission" FROM emp;
 
-/* || is the pipe statement that concatenate or you can use concat(a,b) like the two statement below */
+-- || is the pipe statement that concatenate or you can use concat(a,b) like the two statement below 
   SELECT 'First Name: '|| ename AS "Employee" FROM emp
 WHERE job ='MANAGER' 
-/* Comparing the two concatenate statement: above using || and below concat(a,b) */
+-- Comparing the two concatenate statement: above using || and below concat(a,b) 
   SELECT concat('First Name: ' , ename) AS "Employee" FROM emp
 WHERE job ='MANAGER' 
   SELECT ename || ' makes $' || sal || ' per month' AS "Income" FROM emp
 WHERE job ='MANAGER'
 
-/* concatenating employee and their job title into a sentence per row */
+-- concatenating employee and their job title into a sentence per row 
 SELECT concat( 
   concat(upper(ename), lower(' IS THE NAME ')), 
   concat(lower('and their job is '), job)) 
 AS position FROM emp;
 
-/* comm column is numeric so we need to change it to char to add the "no data found" string
+-- comm column is numeric so we need to change it to char to add the "no data found" string
 to_char(comm)= changes comm column into a string allowing all the null cell to be replaced with "no data found"*/
 SELECT ename, job, sal, NVL(TO_CHAR(comm), 'NO DATA FOUND') AS income FROM emp
 ORDER BY income;
-/* selecting all name with 5 characters to printout length equal 5 */
+-- selecting all name with 5 characters to printout length equal 5 
 SELECT ename, LENGTH(ename), NVL( TO_CHAR( NULLIF( LENGTH( ename ), 5 )), 'Length equal to 5') as "Character Length" from emp
 
-/* Selecting all the job titles and outputting its average salary per job title*/
+-- Selecting all the job titles and outputting its average salary per job title
 SELECT job, TO_CHAR(ROUND(AVG(sal),2), '$99G999D00') AS "Income"
 FROM emp GROUP BY job;
+
+
+SELECT count(*), job
+  FROM emp GROUP BY job
+HAVING count(*) = 2
