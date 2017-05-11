@@ -142,3 +142,9 @@ WHERE deptno = ( SELECT deptno FROM dept WHERE deptno = 30)
 --above and below queries are equal= meaning the out put is the same.
 SELECT * FROM dept
 WHERE deptno = 30
+
+
+
+
+
+
