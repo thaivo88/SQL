@@ -94,6 +94,10 @@ SELECT * FROM emp
   WHERE job = 'SALESMAN' 
 AND comm = 300 OR comm > 1000;
 
+--selecting emp who has a salary of 300 / 3000
+SELECT * FROM emp  
+  WHERE sal IN (300, 3000);
+
 -- AS statement is use for alias, in other words change the header name of the column 
 SELECT ename AS "Employee Name", sal AS "Income", comm AS "Commission" FROM emp;
 
