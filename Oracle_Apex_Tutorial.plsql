@@ -147,8 +147,16 @@ WHERE deptno = ( SELECT deptno FROM dept WHERE deptno = 30)
 SELECT * FROM dept
 WHERE deptno = 30
 
+--Giving a table an alias by adding the alias name after the table name.
+SELECT emp.ename, emp.job, emp.sal    >>    SELECT e.ename, e.job, e.sal
+FROM emp, dept                        >>    FROM emp e, dept d
+WHERE emp.deptno = dept.deptno        >>    WHERE e.deptno = d.deptno 
+AND dept.loc = 'DALLAS'               >>    AND d.loc = 'DALLAS'
 
 
+SELECT e.ename, e.job, e.sal, e.deptno
+FROM (select * from emp) e, (SELECT * FROM dept WHERE loc = 'DALLAS') d
+WHERE e.deptno = d.deptno 
 
 
 
