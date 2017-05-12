@@ -153,10 +153,16 @@ FROM emp, dept                        >>    FROM emp e, dept d
 WHERE emp.deptno = dept.deptno        >>    WHERE e.deptno = d.deptno 
 AND dept.loc = 'DALLAS'               >>    AND d.loc = 'DALLAS'
 
-
+--subqueries
 SELECT e.ename, e.job, e.sal, e.deptno
 FROM (select * from emp) e, (SELECT * FROM dept WHERE loc = 'DALLAS') d
 WHERE e.deptno = d.deptno 
 
-
+--INNER JOIN 
+--RIGHT JOIN result all the record from the second table and all the matching record from both tables
+--LEFT JOIN result all the record from the first  table and all the matching record from both tables
+--OUTTER JOIN result
+--                                  same results
+SELECT * FROM emp INNER JOIN dept       >>    SELECT * FROM emp, dept
+ON emp.deptno = dept.deptno             >>    WHERE emp.deptno = dept.deptno
 
