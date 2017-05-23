@@ -205,10 +205,26 @@ CREATE TABLE name_of_table (                  >>      CREATE TABLE stores (
   pk_id number NOT null,                      >>      store_ID number NOT null,
   column1 datatype(number),                   >>      city varchar(50)
   .....          );                           >>      );
+  
+--creating a table with a primary key that cannot be duplicated/repeated   
+CREATE TABLE products
+(
+  product_id number not null,
+  name varchar(50),
+  product_cost number(5,2),
+  product_retatil number(5,2),
+  product_type varchar(10),
+  store_id number not null,
+
+  CONSTRAINT product_pk PRIMARY KEY(product_id)
+);
 
 --Inserting data into a table
-INSERT INTO stores (store_ID, city)
-  VALUES (1, 'San Francisco');
+INSERT INTO stores (store_ID, city)  VALUES (1, 'San Francisco');
+or
+INSERT INTO stores VALUES (1, 'San Francisc');
+--for this command you dont have to list all the value storage name if you are listing all the values
+
 --inserting more data all at once but the table must have at least one data record in the table
 INSERT ALL
    INTO stores (store_id, city) VALUES (2, 'New York City')
@@ -217,3 +233,16 @@ INSERT ALL
    INTO stores (store_id, city) VALUES (5, 'Boston')
    INTO stores (store_id, city) VALUES (6, 'Seattle')
 SELECT * FROM stores order by store_id;
+
+--Alter/Modify
+ALTER TABLE name_of_table                       >>      ALTER TABLE products
+  MODIFY name_of_column datatype ....;          >>        MODIFY name varchar2(50) not null;
+
+--Modify more than one column
+ALTER TABLE products
+MODIFY (name varchar2(50) NOT null,
+        product_cost number(5,2) NOT null);
+        
+--Renaming a column name        
+ALTER TABLE products
+RENAME COLUMN name TO product_name;
