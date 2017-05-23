@@ -158,11 +158,21 @@ SELECT e.ename, e.job, e.sal, e.deptno
 FROM (select * from emp) e, (SELECT * FROM dept WHERE loc = 'DALLAS') d
 WHERE e.deptno = d.deptno 
 
---INNER JOIN 
---RIGHT JOIN result all the record from the second table and all the matching record from both tables
---LEFT JOIN result all the record from the first  table and all the matching record from both tables
---OUTTER JOIN result
+--JOIN
+--INNER JOIN  result all the record from both table with matching records
+--OUTTER JOIN result result all the record from both tables
+--RIGHT OUTTER JOIN or RIGHT JOIN or (+) result all the record from the second table and all the matching record from both tables
+--LEFT OUTTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
 --                                  same results
 SELECT * FROM emp INNER JOIN dept       >>    SELECT * FROM emp, dept
 ON emp.deptno = dept.deptno             >>    WHERE emp.deptno = dept.deptno
 
+--                                  same result (right outter join)
+SELECT *                                >>    SELECT *
+FROM emp RIGHT JOIN dept                >>    FROM emp, dept
+ON emp.deptno = dept.deptno             >>    WHERE emp.deptno(+) = dept.deptno
+
+--                                  same result (left outter join)
+SELECT *                                >>    SELECT *
+FROM emp RIGHT JOIN dept                >>    FROM emp, dept
+ON emp.deptno = dept.deptno             >>    WHERE emp.deptno = dept.deptno(+)
