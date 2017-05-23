@@ -79,7 +79,7 @@
   LEFT OUTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
   FULL OUTER JOIN result all the record from both tables
   
-  EXISTS
+  Correlated subquery 
   ----------------
   WHERE EXISTS (select * from....)
   
@@ -199,4 +199,10 @@ on e.deptno = d.deptno
 SELECT e.*, d.*
 FROM (SELECT * FROM dept) d left OUTER JOIN (select * from emp where job ='SALESMAN') e 
 on e.deptno = d.deptno
+
+--Creating a table
+CREATE TABLE name_of_table (                  >>      CREATE TABLE stores (
+  pk_id number NOT null,                      >>      store_ID number NOT null,
+  column1 datatype(number),                   >>      city varchar(50)
+  .....          )                            >>      )
 
