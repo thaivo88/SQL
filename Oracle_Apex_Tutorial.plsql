@@ -69,6 +69,20 @@
   DDTH                 date of month              25th
   YYYY                 4 digit year               2007
   
+  JOIN
+  ---------------------------------------------------------------------------------------
+  INNER JOIN  result all the record from both table with matching records
+  
+  OUTER JOIN
+  ----------------------------------------------------------------------------------------------------------------
+  RIGHT OUTER JOIN or RIGHT JOIN or (+) result all the record from the second table and all the matching record from both tables
+  LEFT OUTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
+  FULL OUTER JOIN result all the record from both tables
+  
+  EXISTS
+  ----------------
+  WHERE EXISTS (select * from....)
+  
   Facts:
   ------------------------------------------------------------------------
   -No GROUP functions in WHERE clause (only single row functions allowed in WHERE clause)
@@ -160,19 +174,29 @@ WHERE e.deptno = d.deptno
 
 --JOIN
 --INNER JOIN  result all the record from both table with matching records
---OUTTER JOIN result result all the record from both tables
---RIGHT OUTTER JOIN or RIGHT JOIN or (+) result all the record from the second table and all the matching record from both tables
---LEFT OUTTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
+--OUTER JOIN
+--RIGHT OUTER JOIN or RIGHT JOIN or (+) result all the record from the second table and all the matching record from both tables
+--LEFT OUTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
+--FULL OUTER JOIN result all the record from both tables
 --                                  same results
 SELECT * FROM emp INNER JOIN dept       >>    SELECT * FROM emp, dept
 ON emp.deptno = dept.deptno             >>    WHERE emp.deptno = dept.deptno
 
---                                  same result (right outter join)
+--                                  same result (right outer join)
 SELECT *                                >>    SELECT *
 FROM emp RIGHT JOIN dept                >>    FROM emp, dept
 ON emp.deptno = dept.deptno             >>    WHERE emp.deptno(+) = dept.deptno
 
---                                  same result (left outter join)
+--                                  same result (left outer join)
 SELECT *                                >>    SELECT *
 FROM emp RIGHT JOIN dept                >>    FROM emp, dept
 ON emp.deptno = dept.deptno             >>    WHERE emp.deptno = dept.deptno(+)
+
+SELECT empno, ename, job, mgr, hiredate, sal, comm, e.deptno as deptno, d.deptno as deptno, dname, loc 
+FROM (SELECT * FROM dept) d left OUTER JOIN (select * from emp where job ='SALESMAN') e 
+on e.deptno = d.deptno
+--same result
+SELECT e.*, d.*
+FROM (SELECT * FROM dept) d left OUTER JOIN (select * from emp where job ='SALESMAN') e 
+on e.deptno = d.deptno
+
