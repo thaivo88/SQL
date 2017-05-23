@@ -204,5 +204,16 @@ on e.deptno = d.deptno
 CREATE TABLE name_of_table (                  >>      CREATE TABLE stores (
   pk_id number NOT null,                      >>      store_ID number NOT null,
   column1 datatype(number),                   >>      city varchar(50)
-  .....          )                            >>      )
+  .....          );                           >>      );
 
+--Inserting data into a table
+INSERT INTO stores (store_ID, city)
+  VALUES (1, 'San Francisco');
+--inserting more data all at once but the table must have at least one data record in the table
+INSERT ALL
+   INTO stores (store_id, city) VALUES (2, 'New York City')
+   INTO stores (store_id, city) VALUES (3, 'Houston')
+   INTO stores (store_id, city) VALUES (4, 'Philadelphia')
+   INTO stores (store_id, city) VALUES (5, 'Boston')
+   INTO stores (store_id, city) VALUES (6, 'Seattle')
+SELECT * FROM stores order by store_id;
