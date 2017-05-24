@@ -79,6 +79,11 @@
   LEFT OUTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
   FULL OUTER JOIN result all the record from both tables
   
+  UNION
+  ------------------------------
+  UNION joining both data unique value with no duplicates (must have the same column)
+  UNION ALL join both data from both query with duplicates
+    
   Other snytax
   ----------------
   WHERE EXISTS (select * from....)
@@ -90,11 +95,18 @@
   CREATE { table-name }
   INSERT INTO { table-name (column-name1, column-namen,.... ) } VALUE { column-value1, column-valuen,.... }
   UPDATE { table-name } SET { column-name (operations) attribute } WHERE {column-name (operations) attribute }
-  ALTER TABLE { table-name } (ADD, MODIFY, RENAME {column-name}, 
-  CONSTRAINTS) { column-name}
+  ALTER TABLE { table-name } (ADD, MODIFY, RENAME {column-name}, REBUILD, ADD CONSTRAINTS) { column-name}
   DELETE FROM {table-name} WHERE {condition}; used to delete the existing records from a table
-  DROP TABLE {table-name} delect the whole table (data and structure)
+  DROP (TABLE, INDEX) {table-name, index_name} delect the whole table (data and structure)
   TRUNCATE TABLE {table-name} delete all data in the table but keeps the table
+  CREATE [UNIQUE] INDEX index_name ON table_name (column1, column2...) [COMPUTE STATISTICS]  
+  CREATE VIEW {view_name} AS {query} | view is a saved query 
+  MINUS
+  ROWID
+  ROWNUM
+  ALL_TABLE
+  ALL_TAB_COLUMN
+  ALL_OBJECTS
   
   Facts:
   ------------------------------------------------------------------------
@@ -273,3 +285,8 @@ ADD store_id number;
 UPDATE employees
 SET store_id = 3
 WHERE ename IN ('KING', 'BLAKE', 'CLARK')
+
+-- Creating an index
+CREATE INDEX emp_name_idx
+ON employees (ename)
+
