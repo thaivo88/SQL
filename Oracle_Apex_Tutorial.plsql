@@ -90,7 +90,11 @@
   CREATE { table-name }
   INSERT INTO { table-name (column-name1, column-namen,.... ) } VALUE { column-value1, column-valuen,.... }
   UPDATE { table-name } SET { column-name (operations) attribute } WHERE {column-name (operations) attribute }
-  ALTER TABLE { table-name } (ADD, MODIFY, RENAME) { column-name}
+  ALTER TABLE { table-name } (ADD, MODIFY, RENAME {column-name}, 
+  CONSTRAINTS) { column-name}
+  DELETE FROM {table-name} WHERE {condition}; used to delete the existing records from a table
+  DROP TABLE {table-name} delect the whole table (data and structure)
+  TRUNCATE TABLE {table-name} delete all data in the table but keeps the table
   
   Facts:
   ------------------------------------------------------------------------
