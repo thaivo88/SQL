@@ -101,6 +101,7 @@
   TRUNCATE TABLE {table-name} delete all data in the table but keeps the table
   CREATE [UNIQUE] INDEX index_name ON table_name (column1, column2...) [COMPUTE STATISTICS]  
   CREATE VIEW {view_name} AS {query} | view is a saved query 
+  CREATE OR REPLACE {name}
   MINUS
   ROWID
   ROWNUM
