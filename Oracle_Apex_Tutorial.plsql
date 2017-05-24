@@ -79,9 +79,18 @@
   LEFT OUTER JOIN or LEFT JOIN or (+) result all the record from the first table and all the matching record from both tables
   FULL OUTER JOIN result all the record from both tables
   
-  Correlated subquery 
+  Other snytax
   ----------------
   WHERE EXISTS (select * from....)
+  DESCRIBE { table-Name | view-Name }           
+        Provides a decription of the specified table or view. 
+        For a list of tables in the current schema, use the Show Tables command. 
+        For a list of views in the current schema, use the Show Views command. 
+        For a list of available schemas, use the Show Schemas command.
+  CREATE { table-name }
+  INSERT INTO { table-name (column-name1, column-namen,.... ) } VALUE { column-value1, column-valuen,.... }
+  UPDATE { table-name } SET { column-name (operations) attribute } WHERE {column-name (operations) attribute }
+  ALTER TABLE { table-name } (ADD, MODIFY, RENAME) { column-name}
   
   Facts:
   ------------------------------------------------------------------------
@@ -206,6 +215,11 @@ CREATE TABLE name_of_table (                  >>      CREATE TABLE stores (
   column1 datatype(number),                   >>      city varchar(50)
   .....          );                           >>      );
   
+--creating a table by borrowing the structure of another
+CREATE TABLE employees AS                                 --creating a table called 'employees' just AS the table name emp
+(SELECT empno, ename, job, hiredate, sal, comm            --Using the same column structure and name as the ones in emp table
+FROM emp);
+  
 --creating a table with a primary key that cannot be duplicated/repeated   
 CREATE TABLE products
 (
@@ -246,3 +260,12 @@ MODIFY (name varchar2(50) NOT null,
 --Renaming a column name        
 ALTER TABLE products
 RENAME COLUMN name TO product_name;
+
+--Adding a column
+ALTER TABLE employees
+ADD store_id number;
+
+--updating a column
+UPDATE employees
+SET store_id = 3
+WHERE ename IN ('KING', 'BLAKE', 'CLARK')
