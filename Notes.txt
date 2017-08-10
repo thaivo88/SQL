@@ -1,0 +1,46 @@
+You can view SQL as being divided into 3 parts: 
+Data Definition Language (DDL) 
+You can create and revise the structure (the metadata) of a database. 
+Data Manipulation Language (DML) 
+You can operate on the data contained in the database 
+Data Control Language (DCL) 
+You can maintain a database's security and reliability 
+Data Definition Language (DDL) 
+The data definition language is the part of SQL that you use to create a database and all of its structural components: 
+Attribute 
+Tables 
+Schemas 
+Catalog 
+Views 
+Domain 
+ 
+Views can be single-table or multiple table view. Multiple table view draw selected columns from multiple tables. 
+ 
+Schemas allow multiple tables to have the same name but be unrelated, like a subcategory. 
+It makes sense to place tables and views that are related to each other in the same schema.  
+In some case it is important to keep one set of tables separated from another set by creating a schemas. 
+For really big systems with a large number of schemas, you may want to separate related schemas into their own catalogs. 
+ 
+CREATE SCHEMA NAME 
+ 
+Domains is the set of all values that a table's attributes can take on. 
+ 
+CREATE DOMAIN Color CHAR (15) 
+CHECK (VALUE IS "Red" OR "White" OR "Blue") 
+ 
+When a table attribute is defined as of type color, only red, white, and blue will be accepted. 
+ 
+DROP TABLE will not always get rid of the table. If two tables are related with a primary key/foreign key link, a referential integrity constraint may prevent you from dropping one of those tables. 
+Data Manipulation Language (DML) 
+SELECT statement is the primary tool for extracting whatever information you want. 
+(*) the asterisk is a wildcard character that means everything 
+SELECT * FROM customer >> will return data of all columns. 
+Because you're not placing any restriction on which rows to return, all the data in all the rows of the table will return. 
+ 
+:vcstid, is a variable that is incremented each time a new record is added to the table. 
+ 
+With UPDATE statement you can change a single row in a table or a set of rows. 
+UPDATE table_name 
+SET column_1 = expression_1, column_2 = expression_2, column_n = expression_n, 
+WHERE row 
+ 
