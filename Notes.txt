@@ -44,3 +44,47 @@ UPDATE table_name
 SET column_1 = expression_1, column_2 = expression_2, column_n = expression_n, 
 WHERE row 
  
+Oracle server technologies make up of: 
+Oracle Database is the repository for data and the engine that manages access to it.  
+Oracle Application Server runs software on behalf of end users: it generates the user interface in the form of windows displayed in users’ browsers and submits calls for data retrieval and modification to the database for execution. 
+Oracle Enterprise Manager is a comprehensive administration tool for monitoring, managing, and tuning the Oracle processes and also (through plug-ins) third-party products. 
+Various application development tools and languages either applications that run on end users’ machines in the client-server model, or applications that run centrally on application servers. 
+Together these are the server technologies that make up the Grid. Grid computing is an environment for managing the complete IT environment. 
+ 
+A paradigm is a set of standards agreed upon by all those involved that specifies how problems should be understood and addressed. 
+The processing model implemented by the Oracle server is that of client-server processing, often referred to as two-tier. An application developed using SQL (as all relational database applications will be), this means that the client tier generates the SQL commands, and the server tier executes them.  
+Access to the database is through the Oracle instance. The instance is a set of processes and memory structures: it exists on the CPU(s) and in the memory of the server node, and this existence is temporary. 
+
+The client tier consist of two components: 
+The users 
+The user processes 
+
+The server tier has three components: 
+The server processes that execute the SQL 
+The instance 
+The database 
+
+Each user process interacts with a server process, usually across a local area network.  
+The server processes interact with the instance, and the instance with the database.  
+A session is a user process in communication with a server process. 
+There will usually be one user process per user and one server process per user process.  
+The user and server processes that make up sessions are launched on demand by users and terminated when no longer required; this is the log-on and log-off cycle. 
+ 
+The simplest form of the database server is one instance connected to one database, but in a more complex environment one database can be opened by many instances. This is known as a RAC (Real Application Cluster). RAC can bring many potential benefits, which may include scalability, performance, and zero downtime.  
+Processing model of web applications is three tier:  
+A client tier that manages the user interface. (browser) 
+An application middle tier that generates the interface and issues SQL statements to the data tier. (Oracle Application Server) 
+A data tier that manages the data itself. (Oracle server: an instance and a database) 
+
+Each user, from their browser, will establish a session against the application server 
+the user process has been divided into two tiers:  
+an applications tier that generates the user interface 
+a client tier that displays it. 
+The application server will then establish a session against the database server on the user’s behalf. 
+ 
+Oracle Enterprise Manager comes in three forms: 
+Database control 
+Application server control 
+Grid control 
+ 
+ 
