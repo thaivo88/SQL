@@ -1,0 +1,19 @@
+select employee_id, 
+       last_name, 
+       salary, 
+       round(salary+(salary*15.5/100)) "New Salary", 
+       (salary+(salary*15.5/100))-salary "Increses"
+from HR.employees
+;
+
+
+SELECT e.last_name, d.department_name, d.location_id, l.city
+FROM HR.employees e, HR.departments d, HR.locations l
+WHERE e.department_id = d.department_id
+AND d.location_id = l.location_id
+AND e.commission_pct IS NOT NULL
+;
+
+select last_name, nvl(to_char(COMMISSION_PCT),'NO COMMISSION') "COMM"
+from HR.employees
+;
