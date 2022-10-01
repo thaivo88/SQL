@@ -1,0 +1,58 @@
+8.	Create the MY_EMPLOYEEXX (add your initials in place of XX) table. Then Insert data into the table from the following sample data. Confirm your addition to the table.
+  ID	LAST_NAME	USERID	SALARY
+  1	Patel	rpatel	895
+  2	Dancs	bdancs	860
+  3	Biri	bbiri	1100
+  4	Newman	cnewman	750
+
+9.	Create a query that will change the last name of employee 3 in the MY_EMPLOYEEXX table to Drexler, and change the salary to 1000 for all employees with a salary less than 900. Verify your changes to the table.
+
+10.   Create a query that will add a PRIMARY KEY constraint to the MY_EMPLOYEEXX table on the ID column. Name the constraint my_empXX_id_pk.
+
+
+
+
+---DROP TABLE MY_EMPLOYEESTV;
+
+
+CREATE TABLE MY_EMPLOYEESTV
+(
+    ID NUMBER(6) NOT NULL,
+    LAST_NAME VARCHAR2(25) NOT NULL,
+    USERID VARCHAR2(25),
+    SALARY NUMBER(8,2)
+);
+
+INSERT INTO MY_EMPLOYEESTV (ID, LAST_NAME, USERID, SALARY) VALUES (1, 'Patel', 'rpatel', 895);
+INSERT INTO MY_EMPLOYEESTV (ID, LAST_NAME, USERID, SALARY) VALUES (2, 'Dancs', 'bdancs', 860);
+INSERT INTO MY_EMPLOYEESTV (ID, LAST_NAME, USERID, SALARY) VALUES (3, 'Biri', 'bbiri', 1100);
+INSERT INTO MY_EMPLOYEESTV (ID, LAST_NAME, USERID, SALARY) VALUES (4, 'Newman', 'cnewman', 750);
+    
+DESC MY_EMPLOYEESTV;
+
+SELECT * FROM MY_EMPLOYEESTV;
+
+
+
+
+
+UPDATE MY_EMPLOYEESTV
+SET LAST_NAME='DREXLER'
+WHERE ID=3;
+
+UPDATE MY_EMPLOYEESTV
+SET SALARY = 1000
+WHERE SALARY < 900;
+
+SELECT * FROM MY_EMPLOYEESTV;
+
+
+
+
+
+ALTER TABLE MY_EMPLOYEESTV
+ADD CONSTRAINT my_empTV_id_pk PRIMARY KEY (ID);
+
+DESC MY_EMPLOYEESTV;
+
+SELECT * FROM MY_EMPLOYEESTV;
